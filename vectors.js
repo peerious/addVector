@@ -19,9 +19,9 @@ function randomGridVector(){
 
     return {
 
-        x: randomInt(-8, 8),
+        x: randomInt(-15, 15),
 
-        y: randomInt(-6, 6)
+        y: randomInt(-9, 9)
 
     };
 }
@@ -114,9 +114,17 @@ function setupCanvas(){
 
     ctx = canvas.getContext("2d");
 
-    originX = canvas.width / 2;
+    originX =
+    Math.floor(
+        canvas.width /
+        (2 * scale)
+    ) * scale;
 
-    originY = canvas.height / 2;
+    originY =
+    Math.floor(
+        canvas.height /
+        (2 * scale)
+    ) * scale;
 }
 
 /* =====================================
@@ -227,67 +235,45 @@ function drawTicks(){
 
     ctx.font = "12px Arial";
 
-    for(
+    ctx.textAlign = "center";
 
-        let i = -20;
+    ctx.textBaseline = "middle";
 
-        i <= 20;
+    const maxX = 16;
+    const maxY = 9;
 
-        i++
+    // X axis
 
-    ){
+    for(let i=-maxX;i<=maxX;i++){
 
-        if(i === 0){
+        if(i===0) continue;
 
-            continue;
-        }
-
-        let x = originX + i * scale;
-
-        let y = originY;
+        const x =
+        originX + i*scale;
 
         ctx.fillText(
-
             i,
-
-            x - 5,
-
-            y + 15
-
+            x,
+            originY + 12
         );
     }
 
-    for(
+    // Y axis
 
-        let i = -10;
+    for(let i=-maxY;i<=maxY;i++){
 
-        i <= 10;
+        if(i===0) continue;
 
-        i++
-
-    ){
-
-        if(i === 0){
-
-            continue;
-        }
-
-        let x = originX;
-
-        let y = originY - i * scale;
+        const y =
+        originY - i*scale;
 
         ctx.fillText(
-
             i,
-
-            x + 5,
-
-            y + 4
-
+            originX - 12,
+            y
         );
     }
 }
-
 /* =====================================
    ARROW
 ===================================== */
