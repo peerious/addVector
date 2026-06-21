@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Speed Challenge v1</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =========================
+         START SCREEN
+    ========================== -->
+
+    <div id="startScreen" class="screen">
+
+        <h1>🎯 Vector Speed Challenge</h1>
+
+        <div class="card">
+
+            <h2>ภารกิจ</h2>
+
+            <p>
+                ตอบผลบวกและผลลบของเวกเตอร์ให้เร็วที่สุด
+            </p>
+
+            <p>
+                ยิ่งตอบเร็ว ยิ่งได้คะแนนมาก
+            </p>
+
+            <p>
+                ตอบถูกต่อเนื่องเพื่อรับโบนัสคอมโบ
+            </p>
+
+        </div>
+
+        <div class="settings">
+
+            <label>จำนวนข้อ</label>
+
+            <select id="questionCount">
+                <option>10</option>
+                <option >20</option>
+                <option>30</option>
+                <option>50</option>
+            </select>
+
+        </div>
+
+        <button id="startBtn">
+            🚀 เริ่มเกม
+        </button>
+
+    </div>
+
+    <!-- =========================
+         GAME SCREEN
+    ========================== -->
+
+    <div id="gameScreen" class="screen hidden">
+
+        <!-- TOP BAR -->
+
+        <div id="topBar">
+
+            <div id="scoreBox">
+                คะแนน
+                <span id="scoreValue">0</span>
+            </div>
+
+            <div id="comboBox">
+                Combo
+                <span id="comboValue">0</span>
+            </div>
+
+            <div id="questionBox">
+                ข้อ
+                <span id="questionNumber">1</span>
+                /
+                <span id="questionTotal">20</span>
+            </div>
+
+        </div>
+
+        <!-- TIMER -->
+
+        <div id="timerContainer">
+
+            <div id="timerLabel">
+                เวลาที่เหลือ
+            </div>
+
+            <div id="timerBarOuter">
+
+                <div id="timerBarInner">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CANVAS -->
+
+        <div id="canvasContainer">
+
+            <canvas
+                id="vectorCanvas"
+                width="700"
+                height="400">
+            </canvas>
+
+        </div>
+
+        <!-- QUESTION -->
+
+        <div id="questionPanel">
+
+            <h2 id="questionText">
+
+                A + B = ?
+
+            </h2>
+
+        </div>
+
+        <!-- ANSWER -->
+
+        <div id="answerPanel">
+
+            <div class="answerInput">
+
+                <label>x</label>
+
+                <input
+                    type="number"
+                    id="answerX"
+                    autocomplete="off">
+
+            </div>
+
+            <div class="answerInput">
+
+                <label>y</label>
+
+                <input
+                    type="number"
+                    id="answerY"
+                    autocomplete="off">
+
+            </div>
+
+            <button id="submitBtn">
+
+                ✅ ตอบ
+
+            </button>
+
+        </div>
+
+        <!-- FEEDBACK -->
+
+        <div id="feedbackPanel">
+
+            <div id="feedbackText">
+
+            </div>
+
+        </div>
+
+        <!-- FLOATING SCORE EFFECT -->
+
+        <div id="floatingScoreContainer">
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         RESULT SCREEN
+    ========================== -->
+
+    <div id="resultScreen" class="screen hidden">
+
+        <h1>🏆 สรุปผล</h1>
+
+        <div class="card">
+
+            <p>
+                คะแนนรวม:
+                <span id="finalScore">
+                    0
+                </span>
+            </p>
+
+            <p>
+                ตอบถูก:
+                <span id="correctCount">
+                    0
+                </span>
+            </p>
+
+            <p>
+                ตอบผิด:
+                <span id="wrongCount">
+                    0
+                </span>
+            </p>
+
+            <p>
+                ความแม่นยำ:
+                <span id="accuracy">
+                    0%
+                </span>
+            </p>
+
+            <p>
+                คอมโบสูงสุด:
+                <span id="maxCombo">
+                    0
+                </span>
+            </p>
+
+        </div>
+
+        <button id="restartBtn">
+
+            🔄 เล่นอีกครั้ง
+
+        </button>
+
+    </div>
+
+    <!-- =========================
+         AUDIO
+    ========================== -->
+
+    <audio id="correctSound"></audio>
+    <audio id="wrongSound"></audio>
+    <audio id="timeoutSound"></audio>
+    <audio id="winSound"></audio>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="vectors.js"></script>
+    <script src="audio.js"></script>
+    <script src="score.js"></script>
+    <script src="game.js"></script>
+
+</body>
+</html>
